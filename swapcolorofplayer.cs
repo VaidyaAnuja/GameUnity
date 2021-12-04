@@ -27,7 +27,7 @@ if(Input.GetKeyDown(KeyCode.X))
             spriteRenderer.sprite = spriteArray[i];
             i++;
             //  spriteRenderer.sprite = newSprite; 
-            
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 0.6f), ForceMode2D.Impulse);
         }
 }
 
