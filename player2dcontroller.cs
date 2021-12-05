@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class player2dcontroller : MonoBehaviour
 {
@@ -26,7 +27,12 @@ public class player2dcontroller : MonoBehaviour
     public GameObject v2; 
     public GameObject v3; 
     public GameObject colorchangertile;
-    public GameObject colorchangervertical; 
+    public GameObject colorchangervertical;
+    
+    public GameObject tile111; 
+    public GameObject tile222; 
+    public GameObject tile333; 
+    
      private BoxCollider2D collider_player;
      public BoxCollider2D collider_v1;
      public BoxCollider2D collider_v2;
@@ -55,6 +61,10 @@ public class player2dcontroller : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        Vector3 characterScale = transform.localScale;
+          //characterScale.y = 0.3f;
+        
+
         is_grounded = Physics2D.OverlapCircle(groundcheck.position, 1.5f, groundlayer);
         if (Input.GetKeyDown(KeyCode.Space))
         { 
@@ -64,7 +74,7 @@ public class player2dcontroller : MonoBehaviour
         }}
         var movement = Input.GetAxis("Horizontal");
         transform.position += new Vector3(movement,0,0) * Time.deltaTime * MovementSpeed;
-        Vector3 characterScale = transform.localScale;
+        // Vector3 characterScale = transform.localScale;
         if(Input.GetAxis("Horizontal") < 0){
             characterScale.x = -0.3f;
         }
@@ -76,7 +86,7 @@ public class player2dcontroller : MonoBehaviour
 
         if(transform.position.y < -3){
             // GameController.isGameOver = true;
-            Debug.Log("Dead");
+            SceneManager.LoadScene("EndGame");
         }
 
         if (collider_v1.enabled == false){
@@ -111,29 +121,37 @@ public class player2dcontroller : MonoBehaviour
                     timeLeft_vertical = 5.0f;
                 }}
 
-        //         if (collider_player.enabled == false){
-        //    after -= Time.deltaTime;
-        //         if (after < 0)
-        //         {
-        //             collider_player.enabled = true;
-        //             after = 3.0f;
-        //         }}
+        if(makechild_tile111.isOnMoving){
+            this.transform.SetParent(tile111.transform);
+        }
+        if((makechild_tile111.isOnMoving ==false) && (makechild_tile222.isOnMoving ==false) && (makechild_tile333.isOnMoving ==false) ){
+            this.transform.SetParent(null);
+        }
 
+        if(makechild_tile222.isOnMoving){
+            this.transform.SetParent(tile222.transform);
+        }
+
+        if(makechild_tile333.isOnMoving){
+            this.transform.SetParent(tile333.transform);
+        }
 
     }
 
     void OnCollisionEnter2D(Collision2D col){
-        if(col.gameObject.name == "tile1"){
-            
-            if(colorrenderer_player.sprite == gamechar2){
+        if((col.gameObject.name == "tile1") || (col.gameObject.name == "tile11") || (col.gameObject.name == "tile111") ){
+
+                if(colorrenderer_player.sprite == gamechar2){
                 collider_player.enabled = true;
             }
             else{
                 collider_player.enabled = false;
+              
             }
+           
         }
 
-        if(col.gameObject.name == "tile2"){
+        if((col.gameObject.name == "tile2") || (col.gameObject.name == "tile22") || (col.gameObject.name == "tile222")){
             if(colorrenderer_player.sprite == gamechar3){
                 collider_player.enabled = true;
             }
@@ -142,7 +160,7 @@ public class player2dcontroller : MonoBehaviour
             }
         }
 
-        if(col.gameObject.name == "tile3"){
+        if((col.gameObject.name == "tile3") || (col.gameObject.name == "tile33") || (col.gameObject.name == "tile333")){
             if(colorrenderer_player.sprite == gamechar4){
                 collider_player.enabled = true;
             }
