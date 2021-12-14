@@ -10,6 +10,7 @@ public SpriteRenderer spriteRenderer;
 public GameObject player;
 public Sprite[] spriteArray;
 public static int health;
+public static string whichcolor;
 
 //[SerializeField] private Color newColor;
 
@@ -19,6 +20,7 @@ private void Start()
     {
         health = 10;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        whichcolor = "green";
     }
 
 private void Update(){
@@ -26,6 +28,17 @@ if(Input.GetKeyDown(KeyCode.X))
         {
             if(i>2){
                 i=0;
+            }
+            if(i==0){
+                whichcolor = "pink";
+            }
+
+            if(i==1){
+                whichcolor = "violet";
+            }
+
+            if(i==2){
+                whichcolor = "green";
             }
             spriteRenderer.sprite = spriteArray[i];
             i++;

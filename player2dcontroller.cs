@@ -11,7 +11,7 @@ public class player2dcontroller : MonoBehaviour
     private SpriteRenderer colorrenderer_player;
     public SpriteRenderer colorrenderer_specialtile;
 
-    public SpriteRenderer colorrenderer_specialvertical;
+    //public SpriteRenderer colorrenderer_specialvertical;
     public Sprite gamechar2;
     public Sprite gamechar3;
     public Sprite gamechar4;
@@ -20,52 +20,42 @@ public class player2dcontroller : MonoBehaviour
     public Sprite tile2;
     public Sprite tile3;
 
-    public Sprite verical1;
-    public Sprite vertical2;
-    public Sprite vertical3;
-    public GameObject v1; 
-    public GameObject v2; 
-    public GameObject v3; 
+    // public Sprite verical1;
+    // public Sprite vertical2;
+    // public Sprite vertical3;
+    // public GameObject v1; 
+    // public GameObject v2; 
+    // public GameObject v3; 
     public GameObject colorchangertile;
-    public GameObject colorchangervertical;
+    //public GameObject colorchangervertical;
     
     public GameObject tile111; 
     public GameObject tile222; 
     public GameObject tile333; 
     
      private BoxCollider2D collider_player;
-     public BoxCollider2D collider_v1;
-     public BoxCollider2D collider_v2;
-     public BoxCollider2D collider_v3;
+    //  public BoxCollider2D collider_v1;
+    //  public BoxCollider2D collider_v2;
+    //  public BoxCollider2D collider_v3;
 
-     public BoxCollider2D collider_specialvertical;
+    //  public BoxCollider2D collider_specialvertical;
 
-     public float timeLeft_1 = 5.0f;
-     public float timeLeft_2 = 5.0f;
-     public float timeLeft_3 = 5.0f;
-
-     public float timeLeft_vertical = 5.0f;
+     
      //public float after = 5.0f;
     // Start is called before the first frame update
     private void Start()
     {
         colorrenderer_player = GetComponent<SpriteRenderer>();
         collider_player = GetComponent<BoxCollider2D>();
-        collider_v1 = v1.GetComponent<BoxCollider2D>();
-        collider_v2 = v2.GetComponent<BoxCollider2D>();
-        collider_v3 = v3.GetComponent<BoxCollider2D>();
         colorrenderer_specialtile = colorchangertile.GetComponent<SpriteRenderer>();
-        colorrenderer_specialvertical = colorchangervertical.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     private void Update()
     {
         Vector3 characterScale = transform.localScale;
-          //characterScale.y = 0.3f;
-        
 
-        is_grounded = Physics2D.OverlapCircle(groundcheck.position, 1.5f, groundlayer);
+        is_grounded = Physics2D.OverlapCircle(groundcheck.position, 2.0f, groundlayer);
         if (Input.GetKeyDown(KeyCode.Space))
         { 
             if(is_grounded){
@@ -74,7 +64,7 @@ public class player2dcontroller : MonoBehaviour
         }}
         var movement = Input.GetAxis("Horizontal");
         transform.position += new Vector3(movement,0,0) * Time.deltaTime * MovementSpeed;
-        // Vector3 characterScale = transform.localScale;
+        
         if(Input.GetAxis("Horizontal") < 0){
             characterScale.x = -0.3f;
         }
@@ -84,43 +74,12 @@ public class player2dcontroller : MonoBehaviour
 
         transform.localScale = characterScale;
 
-        if(transform.position.y < -3){
+        if(transform.position.y < -6){
             // GameController.isGameOver = true;
             SceneManager.LoadScene("EndGame");
         }
 
-        if (collider_v1.enabled == false){
-            timeLeft_1 -= Time.deltaTime;
-                if (timeLeft_1 < 0)
-                {
-                    collider_v1.enabled = true;
-                    timeLeft_1 = 5.0f;
-                }}
-
-                if (collider_v2.enabled == false){
-            timeLeft_2 -= Time.deltaTime;
-                if (timeLeft_2 < 0)
-                {
-                    collider_v2.enabled = true;
-                    timeLeft_2 = 5.0f;
-                }}
-
-                if (collider_v3.enabled == false){
-            timeLeft_3 -= Time.deltaTime;
-                if (timeLeft_3 < 0)
-                {
-                    collider_v3.enabled = true;
-                    timeLeft_3 = 5.0f;
-                }}
-
-                if (collider_specialvertical.enabled == false){
-            timeLeft_vertical -= Time.deltaTime;
-                if (timeLeft_vertical < 0)
-                {
-                    collider_specialvertical.enabled = true;
-                    timeLeft_vertical = 5.0f;
-                }}
-
+        
         if(makechild_tile111.isOnMoving){
             this.transform.SetParent(tile111.transform);
         }
@@ -138,8 +97,9 @@ public class player2dcontroller : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D col){
-        if((col.gameObject.name == "tile1") || (col.gameObject.name == "tile11") || (col.gameObject.name == "tile111") ){
+    void OnCollisionStay2D(Collision2D col){
+        // Debug.Log("Done");
+        if((col.gameObject.CompareTag("tile1")) || (col.gameObject.CompareTag("tile11")) || (col.gameObject.CompareTag("tile111")) ){
 
                 if(colorrenderer_player.sprite == gamechar2){
                 collider_player.enabled = true;
@@ -151,7 +111,7 @@ public class player2dcontroller : MonoBehaviour
            
         }
 
-        if((col.gameObject.name == "tile2") || (col.gameObject.name == "tile22") || (col.gameObject.name == "tile222")){
+        if((col.gameObject.CompareTag("tile2")) || (col.gameObject.CompareTag("tile22")) || (col.gameObject.CompareTag("tile222"))){
             if(colorrenderer_player.sprite == gamechar3){
                 collider_player.enabled = true;
             }
@@ -160,7 +120,7 @@ public class player2dcontroller : MonoBehaviour
             }
         }
 
-        if((col.gameObject.name == "tile3") || (col.gameObject.name == "tile33") || (col.gameObject.name == "tile333")){
+        if((col.gameObject.CompareTag("tile3")) || (col.gameObject.CompareTag("tile33")) || (col.gameObject.CompareTag("tile333"))){
             if(colorrenderer_player.sprite == gamechar4){
                 collider_player.enabled = true;
             }
@@ -169,17 +129,49 @@ public class player2dcontroller : MonoBehaviour
             }
         }
 
-        if(col.gameObject.name == "tilecolorchanger"){
-            if((colorrenderer_player.sprite == gamechar2) && (colorrenderer_specialtile.sprite == tile1)){
+        // if(col.gameObject.CompareTag("tilecolorchanger")){
+            
+        //     if((colorrenderer_player.sprite == gamechar2) && (colorrenderer_specialtile.sprite == tile1)){
+        //         collider_player.enabled = true;
+                
+        //     }
+
+        //     else if((colorrenderer_player.sprite == gamechar3) && (colorrenderer_specialtile.sprite == tile2)){
+        //         collider_player.enabled = true;
+        //         Debug.Log("Okay");
+        //     }
+
+        //     else if((colorrenderer_player.sprite == gamechar4) && (colorrenderer_specialtile.sprite == tile3)){
+        //         collider_player.enabled = true;
+        //     }
+
+        //     else{
+        //         collider_player.enabled = false;
+        //     }
+        // }
+
+        if(col.gameObject.CompareTag("tilecolorchanger")){
+           
+            
+            if((colorrenderer_player.sprite == gamechar2)  && 
+            (tile_colorchanger.color == "green")
+            ){
                 collider_player.enabled = true;
+                 
             }
 
-            else if((colorrenderer_player.sprite == gamechar3) && (colorrenderer_specialtile.sprite == tile2)){
+            else if((colorrenderer_player.sprite == gamechar3) && 
+            (tile_colorchanger.color == "pink")
+            ){
                 collider_player.enabled = true;
+                
             }
 
-            else if((colorrenderer_player.sprite == gamechar4) && (colorrenderer_specialtile.sprite == tile3)){
+            else if((colorrenderer_player.sprite == gamechar4) && 
+            (tile_colorchanger.color == "violet")
+            ){
                 collider_player.enabled = true;
+                 
             }
 
             else{
@@ -187,55 +179,55 @@ public class player2dcontroller : MonoBehaviour
             }
         }
 
-        if(col.gameObject.name == "vertical_colorchanger"){
-            if((colorrenderer_player.sprite == gamechar2) && (colorrenderer_specialvertical.sprite == verical1)){
-                collider_specialvertical.enabled = true;
-            }
+//         if(col.gameObject.CompareTag("vertical_colorchanger")){
+//             if((colorrenderer_player.sprite == gamechar2) && (colorrenderer_specialvertical.sprite == verical1)){
+//                 collider_specialvertical.enabled = true;
+//             }
 
-            else if((colorrenderer_player.sprite == gamechar3) && (colorrenderer_specialvertical.sprite == vertical2)){
-                collider_specialvertical.enabled = true;
-            }
+//             else if((colorrenderer_player.sprite == gamechar3) && (colorrenderer_specialvertical.sprite == vertical2)){
+//                 collider_specialvertical.enabled = true;
+//             }
 
-            else if((colorrenderer_player.sprite == gamechar4) && (colorrenderer_specialvertical.sprite == vertical3)){
-                collider_specialvertical.enabled = true;
-            }
+//             else if((colorrenderer_player.sprite == gamechar4) && (colorrenderer_specialvertical.sprite == vertical3)){
+//                 collider_specialvertical.enabled = true;
+//             }
 
-            else{
-                collider_specialvertical.enabled = false;
-            }
-        }
+//             else{
+//                 collider_specialvertical.enabled = false;
+//             }
+//         }
 
        
 
-if(col.gameObject.name == "vertical_block_1"){
-            if(colorrenderer_player.sprite == gamechar2){
-                collider_v1.enabled = true;
-            }
-            else{
-                collider_v1.enabled = false;
+// if(col.gameObject.CompareTag("vertical_block_1")){
+//             if(colorrenderer_player.sprite == gamechar2){
+//                 collider_v1.enabled = true;
+//             }
+//             else{
+//                 collider_v1.enabled = false;
                  
-            }
-        }
+//             }
+//         }
 
-        if(col.gameObject.name == "vertical_block_2"){
-            if(colorrenderer_player.sprite == gamechar3){
-                collider_v2.enabled = true;
-            }
-            else{
-                collider_v2.enabled = false;
+//         if(col.gameObject.CompareTag("vertical_block_2")){
+//             if(colorrenderer_player.sprite == gamechar3){
+//                 collider_v2.enabled = true;
+//             }
+//             else{
+//                 collider_v2.enabled = false;
                  
-            }
-        }
+//             }
+//         }
 
-        if(col.gameObject.name == "vertical_block_3"){
-            if(colorrenderer_player.sprite == gamechar4){
-                collider_v3.enabled = true;
-            }
-            else{
-                collider_v3.enabled = false;
+//         if(col.gameObject.CompareTag("vertical_block_3")){
+//             if(colorrenderer_player.sprite == gamechar4){
+//                 collider_v3.enabled = true;
+//             }
+//             else{
+//                 collider_v3.enabled = false;
                  
-            }
-        }
+//             }
+//         }
 
 
     }
