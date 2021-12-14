@@ -10,8 +10,6 @@ public class player2dcontroller : MonoBehaviour
     public LayerMask groundlayer;
     private SpriteRenderer colorrenderer_player;
     public SpriteRenderer colorrenderer_specialtile;
-
-    //public SpriteRenderer colorrenderer_specialvertical;
     public Sprite gamechar2;
     public Sprite gamechar3;
     public Sprite gamechar4;
@@ -19,30 +17,13 @@ public class player2dcontroller : MonoBehaviour
     public Sprite tile1;
     public Sprite tile2;
     public Sprite tile3;
-
-    // public Sprite verical1;
-    // public Sprite vertical2;
-    // public Sprite vertical3;
-    // public GameObject v1; 
-    // public GameObject v2; 
-    // public GameObject v3; 
     public GameObject colorchangertile;
-    //public GameObject colorchangervertical;
     
     public GameObject tile111; 
     public GameObject tile222; 
     public GameObject tile333; 
     
      private BoxCollider2D collider_player;
-    //  public BoxCollider2D collider_v1;
-    //  public BoxCollider2D collider_v2;
-    //  public BoxCollider2D collider_v3;
-
-    //  public BoxCollider2D collider_specialvertical;
-
-     
-     //public float after = 5.0f;
-    // Start is called before the first frame update
     private void Start()
     {
         colorrenderer_player = GetComponent<SpriteRenderer>();
@@ -129,26 +110,6 @@ public class player2dcontroller : MonoBehaviour
             }
         }
 
-        // if(col.gameObject.CompareTag("tilecolorchanger")){
-            
-        //     if((colorrenderer_player.sprite == gamechar2) && (colorrenderer_specialtile.sprite == tile1)){
-        //         collider_player.enabled = true;
-                
-        //     }
-
-        //     else if((colorrenderer_player.sprite == gamechar3) && (colorrenderer_specialtile.sprite == tile2)){
-        //         collider_player.enabled = true;
-        //         Debug.Log("Okay");
-        //     }
-
-        //     else if((colorrenderer_player.sprite == gamechar4) && (colorrenderer_specialtile.sprite == tile3)){
-        //         collider_player.enabled = true;
-        //     }
-
-        //     else{
-        //         collider_player.enabled = false;
-        //     }
-        // }
 
         if(col.gameObject.CompareTag("tilecolorchanger")){
            
@@ -178,56 +139,6 @@ public class player2dcontroller : MonoBehaviour
                 collider_player.enabled = false;
             }
         }
-
-//         if(col.gameObject.CompareTag("vertical_colorchanger")){
-//             if((colorrenderer_player.sprite == gamechar2) && (colorrenderer_specialvertical.sprite == verical1)){
-//                 collider_specialvertical.enabled = true;
-//             }
-
-//             else if((colorrenderer_player.sprite == gamechar3) && (colorrenderer_specialvertical.sprite == vertical2)){
-//                 collider_specialvertical.enabled = true;
-//             }
-
-//             else if((colorrenderer_player.sprite == gamechar4) && (colorrenderer_specialvertical.sprite == vertical3)){
-//                 collider_specialvertical.enabled = true;
-//             }
-
-//             else{
-//                 collider_specialvertical.enabled = false;
-//             }
-//         }
-
-       
-
-// if(col.gameObject.CompareTag("vertical_block_1")){
-//             if(colorrenderer_player.sprite == gamechar2){
-//                 collider_v1.enabled = true;
-//             }
-//             else{
-//                 collider_v1.enabled = false;
-                 
-//             }
-//         }
-
-//         if(col.gameObject.CompareTag("vertical_block_2")){
-//             if(colorrenderer_player.sprite == gamechar3){
-//                 collider_v2.enabled = true;
-//             }
-//             else{
-//                 collider_v2.enabled = false;
-                 
-//             }
-//         }
-
-//         if(col.gameObject.CompareTag("vertical_block_3")){
-//             if(colorrenderer_player.sprite == gamechar4){
-//                 collider_v3.enabled = true;
-//             }
-//             else{
-//                 collider_v3.enabled = false;
-                 
-//             }
-//         }
 
 
     }
