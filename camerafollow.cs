@@ -13,8 +13,8 @@
      void LateUpdate() {
    
              float x = IncrementTowards(transform.position.x, target.transform.position.x, trackSpeed);
-             float y = IncrementTowards(transform.position.y, target.transform.position.y, trackSpeed);
-             transform.position = new Vector3(x,y, transform.position.z);
+             //float y = IncrementTowards(transform.position.y, target.transform.position.y, trackSpeed);
+             transform.position = new Vector3(x,0, transform.position.z);
  
      }
      

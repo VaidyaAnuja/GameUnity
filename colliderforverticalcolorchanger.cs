@@ -32,21 +32,21 @@ public class colliderforverticalcolorchanger : MonoBehaviour
             && 
             (colorchangerforvertical.color == "green")
             ){
-                Debug.Log("Green");
+               // Debug.Log("Green");
                 colider_colorchange.enabled = true;
             }
         else if((swapcolorofplayer.whichcolor == "pink") 
         && 
         (colorchangerforvertical.color == "pink")
         ){
-             Debug.Log("Pink");
+             //Debug.Log("Pink");
                 colider_colorchange.enabled = true;
             }
         else if((swapcolorofplayer.whichcolor == "violet") 
         && 
         (colorchangerforvertical.color == "violet")
         ){
-             Debug.Log("Violet");
+            // Debug.Log("Violet");
                 colider_colorchange.enabled = true;
             }
             else{

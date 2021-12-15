@@ -27,7 +27,7 @@ public class tilemovement_updown : MonoBehaviour
             moveup = true;
         }
 
-        if (transform.position.y >= currentpos+5){
+        if (transform.position.y >= currentpos+3){
             moveup = false;
         }
 
