@@ -21,6 +21,6 @@ public class weaponscript : MonoBehaviour
         
     }
     void OnCollisionEnter2D (Collision2D col){
-        Destroy(gameObject, 1f);
+        Destroy(gameObject,1f);
     }
 }

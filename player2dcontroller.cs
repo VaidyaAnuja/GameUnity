@@ -99,7 +99,7 @@ public class player2dcontroller : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D col){
         // Debug.Log("Done");
-        if((col.gameObject.CompareTag("tile1")) || (col.gameObject.CompareTag("tile11")) || (col.gameObject.CompareTag("tile111")) ){
+        if((col.gameObject.CompareTag("tile1")) || (col.gameObject.CompareTag("tile11")) || (col.gameObject.CompareTag("tile111")) || (col.gameObject.CompareTag("tile1111")) ){
 
                 if(colorrenderer_player.sprite == gamechar2){
                 collider_player.enabled = true;
@@ -111,7 +111,7 @@ public class player2dcontroller : MonoBehaviour
            
         }
 
-        if((col.gameObject.CompareTag("tile2")) || (col.gameObject.CompareTag("tile22")) || (col.gameObject.CompareTag("tile222"))){
+        if((col.gameObject.CompareTag("tile2")) || (col.gameObject.CompareTag("tile22")) || (col.gameObject.CompareTag("tile222")) || (col.gameObject.CompareTag("tile2222"))){
             if(colorrenderer_player.sprite == gamechar3){
                 collider_player.enabled = true;
             }
@@ -120,7 +120,7 @@ public class player2dcontroller : MonoBehaviour
             }
         }
 
-        if((col.gameObject.CompareTag("tile3")) || (col.gameObject.CompareTag("tile33")) || (col.gameObject.CompareTag("tile333"))){
+        if((col.gameObject.CompareTag("tile3")) || (col.gameObject.CompareTag("tile33")) || (col.gameObject.CompareTag("tile333")) || (col.gameObject.CompareTag("tile3333"))){
             if(colorrenderer_player.sprite == gamechar4){
                 collider_player.enabled = true;
             }

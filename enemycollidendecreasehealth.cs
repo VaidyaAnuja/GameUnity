@@ -5,7 +5,7 @@ using UnityEngine;
 public class enemycollidendecreasehealth : MonoBehaviour
 {
     public static float timeLeft = 1.0f;
-    public static int enemyhealth = 2;
+    public static int enemyhealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,9 @@ public class enemycollidendecreasehealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(transform.position.y<-6){
+            enemyhealth = 2*swapcolorofplayer.count;
+        }
     }
     void OnCollisionStay2D(Collision2D col){
 
@@ -34,6 +37,7 @@ void OnCollisionEnter2D (Collision2D col){
         enemyhealth = enemyhealth-1;
         if(enemyhealth<=0){
           Destroy(gameObject);
+          enemyhealth = 2*swapcolorofplayer.count;
         }
     }}
 }

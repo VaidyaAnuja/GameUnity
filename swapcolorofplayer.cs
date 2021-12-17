@@ -11,6 +11,8 @@ public GameObject player;
 public Sprite[] spriteArray;
 public static int health = 10;
 public static string whichcolor;
+public static float timer = 0.0f;
+public static int count = 1;
 
 //[SerializeField] private Color newColor;
 
@@ -50,6 +52,17 @@ if(health == 0){
    // Destroy(gameObject);
      SceneManager.LoadScene("EndGame");
 }
+
+if(timer > 0){
+            swapcolorofplayer.timer -= Time.deltaTime;
+}
+
+if(Input.GetKeyDown(KeyCode.V)){
+            count = count + 1;
+            timer = 8.0f;
+            enemycollidendecreasehealth.enemyhealth = enemycollidendecreasehealth.enemyhealth+2;
+            
+        }
 }
 
 

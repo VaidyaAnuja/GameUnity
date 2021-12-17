@@ -9,7 +9,7 @@ public class tile_colorchanger : MonoBehaviour
     public int i=0;
     //public float time_enable = 0.0f;
     public static float timeLeft = 4.0f;
-    public float timer = 0.0f;
+    //public static float timer = 0.0f;
     public static string color;
    // private BoxCollider2D collider_tile;
     // Start is called before the first frame update
@@ -17,6 +17,7 @@ public class tile_colorchanger : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         color = "green";
+        
        // collider_tile = GetComponent<BoxCollider2D>();
     }
 
@@ -32,7 +33,7 @@ public class tile_colorchanger : MonoBehaviour
         //         }}
 
        // timer -= Time.deltaTime;
-        if(timer<=0){
+        if(swapcolorofplayer.timer<=0){
         timeLeft -= Time.deltaTime;
         if(timeLeft < 0)
         {
@@ -68,13 +69,13 @@ public class tile_colorchanger : MonoBehaviour
             // }
         }}
 
-        if(timer > 0){
-            timer -= Time.deltaTime;
-        }
+        // if(swapcolorofplayer.timer > 0){
+        //     swapcolorofplayer.timer -= Time.deltaTime;
+        // }
 
-        if(Input.GetKeyDown(KeyCode.V)){
-            timer = 8.0f;
-        }
+        // if(Input.GetKeyDown(KeyCode.V)){
+        //     swapcolorofplayer.timer = 8.0f;
+        // }
 }
     
 }
