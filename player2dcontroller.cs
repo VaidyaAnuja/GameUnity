@@ -3,6 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class player2dcontroller : MonoBehaviour
 {
+    public GameObject weapontoright;
+    public GameObject weapontoleft;
+    Vector2 weaponpos;
+    public float fireRate = 0.5f;
+    float nextFire = 0.0f;
+    bool faceright = true;
+    
+
     public float MovementSpeed = 3;
     public float JumpForce = 8;
     bool is_grounded;
@@ -48,15 +56,20 @@ public class player2dcontroller : MonoBehaviour
         
         if(Input.GetAxis("Horizontal") < 0){
             characterScale.x = -0.3f;
+            
+            faceright = false;
         }
         if(Input.GetAxis("Horizontal") > 0){
             characterScale.x = 0.3f;
+            
+            faceright = true;
         }
 
         transform.localScale = characterScale;
 
         if(transform.position.y < -6){
             // GameController.isGameOver = true;
+            //Destroy(gameObject);
             SceneManager.LoadScene("EndGame");
         }
 
@@ -74,6 +87,12 @@ public class player2dcontroller : MonoBehaviour
 
         if(makechild_tile333.isOnMoving){
             this.transform.SetParent(tile333.transform);
+        }
+
+
+        if ((Input.GetKeyDown(KeyCode.C)) && (Time.time > nextFire)){
+            nextFire = Time.time + fireRate;
+            fire();
         }
 
     }
@@ -149,5 +168,17 @@ public class player2dcontroller : MonoBehaviour
         //     if(is_grounded){
         gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
     //}}
+    }
+
+    void fire(){
+        weaponpos = transform.position;
+        if(faceright){
+            weaponpos += new Vector2(+1f, 0.2f);
+            Instantiate(weapontoright, weaponpos, Quaternion.identity);
+        }
+        else{
+            weaponpos += new Vector2(-1f, 0.2f);
+            Instantiate(weapontoleft, weaponpos, Quaternion.identity);
+        }
     }
 }

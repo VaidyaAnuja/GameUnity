@@ -36,6 +36,10 @@ public class enemymovement : MonoBehaviour
             characterScale.x = -0.7447402f;
         }
         transform.localScale = characterScale;
+
+        if(transform.position.y < -6){
+        Destroy(gameObject);        }
     }
+    
 
 }

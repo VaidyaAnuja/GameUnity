@@ -9,7 +9,7 @@ public SpriteRenderer spriteRenderer;
 //public Sprite newSprite;
 public GameObject player;
 public Sprite[] spriteArray;
-public static int health;
+public static int health = 10;
 public static string whichcolor;
 
 //[SerializeField] private Color newColor;
@@ -47,6 +47,7 @@ if(Input.GetKeyDown(KeyCode.X))
         }
 
 if(health == 0){
+   // Destroy(gameObject);
      SceneManager.LoadScene("EndGame");
 }
 }
