@@ -35,5 +35,10 @@ public class colliderforv1 : MonoBehaviour
                 colider_v1.enabled = false;
             }
         }
+
+        if(col.gameObject.CompareTag("weapon") ){
+        
+             colider_v1.enabled = false;
+        }
     }
 }

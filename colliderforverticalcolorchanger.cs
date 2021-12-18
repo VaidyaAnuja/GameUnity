@@ -54,5 +54,13 @@ public class colliderforverticalcolorchanger : MonoBehaviour
             }
 
         }
+
+
+
+
+        if(col.gameObject.CompareTag("weapon") ){
+        
+             colider_colorchange.enabled = false;
+        }
     }
 }

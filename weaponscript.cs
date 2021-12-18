@@ -21,6 +21,10 @@ public class weaponscript : MonoBehaviour
         
     }
     void OnCollisionEnter2D (Collision2D col){
-        Destroy(gameObject,1f);
+        if((col.gameObject.CompareTag("player")) || (col.gameObject.CompareTag("vertical_block_1")) || (col.gameObject.CompareTag("vertical_block_2")) || (col.gameObject.CompareTag("vertical_block_3")) || (col.gameObject.CompareTag("vertical_colorchanger"))){
+
+        }
+        else{
+        Destroy(gameObject);}
     }
 }
