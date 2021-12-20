@@ -9,6 +9,8 @@ public class TileManager : MonoBehaviour
     public float xSpawn = 0;    
     public float tileLength = 23;
     public int numberoftiles = 1;
+    public Transform playerTransform;
+    private List<GameObject> activetiles =new List<GameObject>();
     void Start()
     {
          //int rand = Random.Range(0,tilePrefabs.Length);
@@ -24,12 +26,21 @@ public class TileManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(playerTransform.position.x > xSpawn - (numberoftiles*tileLength)){
+            SpawnTile(0);
+            DeleteTile();
+        }
         
     }
 
     public void SpawnTile(int tileindex){
-        Instantiate(tilePrefabs[tileindex], new Vector2( xSpawn,0), transform.rotation);
+       GameObject go = Instantiate(tilePrefabs[tileindex], new Vector2( xSpawn,0), transform.rotation);
         //Instantiate(objects[rand], transform.position, Quaternion.identity);
+        activetiles.Add(go);
         xSpawn += tileLength;
+    }
+    private void DeleteTile(){
+        Destroy(activetiles[0]);
+        activetiles.RemoveAt(0);
     }
 }
