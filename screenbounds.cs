@@ -19,7 +19,7 @@ public class screenbounds : MonoBehaviour
         //Debug.Log(maincam.transform.position);
         //Debug. Log(screenBounds);
         float cameraxpos = Camera.main.transform.position.x;
-        Debug.Log(cameraxpos);
+        //Debug.Log(cameraxpos);
         if(transform.position.x < cameraxpos - 10){
             Destroy(this.gameObject);
        }

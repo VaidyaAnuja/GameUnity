@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.CrossPlatformInput;
+//GetKeyDown(KeyCode.C)
 
 public class player2dcontroller : MonoBehaviour
 {
@@ -8,10 +10,10 @@ public class player2dcontroller : MonoBehaviour
     Vector2 weaponpos;
     public float fireRate = 0.5f;
     float nextFire = 0.0f;
-    bool faceright = true;
+    public static bool faceright = true;
     
 
-    public float MovementSpeed = 3;
+    public static float MovementSpeed = 3;
     public float JumpForce = 8;
     bool is_grounded;
     public Transform groundcheck;
@@ -40,26 +42,26 @@ public class player2dcontroller : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    public void Update()
     {
         Vector3 characterScale = transform.localScale;
 
         is_grounded = Physics2D.OverlapCircle(groundcheck.position, 2.0f, groundlayer);
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (CrossPlatformInputManager.GetButtonDown("Jump"))
         { 
             if(is_grounded){
                // collider_player.enabled = false;
         Jump();
         }}
-        var movement = Input.GetAxis("Horizontal");
+        var movement = CrossPlatformInputManager.GetAxis("Horizontal");
         transform.position += new Vector3(movement,0,0) * Time.deltaTime * MovementSpeed;
         
-        if(Input.GetAxis("Horizontal") < 0){
+        if(CrossPlatformInputManager.GetAxis("Horizontal") < 0){
             characterScale.x = -0.3f;
             
             faceright = false;
         }
-        if(Input.GetAxis("Horizontal") > 0){
+        if(CrossPlatformInputManager.GetAxis("Horizontal") > 0){
             characterScale.x = 0.3f;
             
             faceright = true;
@@ -90,7 +92,7 @@ public class player2dcontroller : MonoBehaviour
         }
 
 
-        if ((Input.GetKeyDown(KeyCode.C)) && (Time.time > nextFire)){
+        if ((CrossPlatformInputManager.GetButtonDown("Fire")) && (Time.time > nextFire)){
             nextFire = Time.time + fireRate;
             fire();
         }
@@ -162,15 +164,18 @@ public class player2dcontroller : MonoBehaviour
 
     }
 
-    void Jump(){
+   public void Jump(){
         // if (Input.GetKeyDown(KeyCode.Space))
         // { 
         //     if(is_grounded){
         gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
     //}}
     }
+    // public void moveleftright(){
 
-    void fire(){
+    // }
+
+   public void fire(){
         weaponpos = transform.position;
         if(faceright){
             weaponpos += new Vector2(+1f, 0.2f);
