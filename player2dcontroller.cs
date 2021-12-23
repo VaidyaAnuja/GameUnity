@@ -10,10 +10,10 @@ public class player2dcontroller : MonoBehaviour
     Vector2 weaponpos;
     public float fireRate = 0.5f;
     float nextFire = 0.0f;
-    public static bool faceright = true;
+    public bool faceright = true;
     
 
-    public static float MovementSpeed = 3;
+    public float MovementSpeed = 3;
     public float JumpForce = 8;
     bool is_grounded;
     public Transform groundcheck;
@@ -47,21 +47,41 @@ public class player2dcontroller : MonoBehaviour
         Vector3 characterScale = transform.localScale;
 
         is_grounded = Physics2D.OverlapCircle(groundcheck.position, 2.0f, groundlayer);
-        if (CrossPlatformInputManager.GetButtonDown("Jump"))
+        // if (CrossPlatformInputManager.GetButtonDown("Jump"))
+        // { 
+        //     if(is_grounded){
+        //        // collider_player.enabled = false;
+        // Jump();
+        // }}
+        // var movement = CrossPlatformInputManager.GetAxis("Horizontal");
+        // transform.position += new Vector3(movement,0,0) * Time.deltaTime * MovementSpeed;
+        
+        // if(CrossPlatformInputManager.GetAxis("Horizontal") < 0){
+        //     characterScale.x = -0.3f;
+            
+        //     faceright = false;
+        // }
+        // if(CrossPlatformInputManager.GetAxis("Horizontal") > 0){
+        //     characterScale.x = 0.3f;
+            
+        //     faceright = true;
+        // }
+
+        if (Input.GetKeyDown(KeyCode.Space))
         { 
             if(is_grounded){
                // collider_player.enabled = false;
         Jump();
         }}
-        var movement = CrossPlatformInputManager.GetAxis("Horizontal");
+        var movement = Input.GetAxis("Horizontal");
         transform.position += new Vector3(movement,0,0) * Time.deltaTime * MovementSpeed;
         
-        if(CrossPlatformInputManager.GetAxis("Horizontal") < 0){
+        if(Input.GetAxis("Horizontal") < 0){
             characterScale.x = -0.3f;
             
             faceright = false;
         }
-        if(CrossPlatformInputManager.GetAxis("Horizontal") > 0){
+        if(Input.GetAxis("Horizontal") > 0){
             characterScale.x = 0.3f;
             
             faceright = true;
@@ -92,7 +112,13 @@ public class player2dcontroller : MonoBehaviour
         }
 
 
-        if ((CrossPlatformInputManager.GetButtonDown("Fire")) && (Time.time > nextFire)){
+        // if ((CrossPlatformInputManager.GetButtonDown("Fire")) && (Time.time > nextFire)){
+        //     nextFire = Time.time + fireRate;
+        //     fire();
+        // }
+
+
+        if ((Input.GetKeyDown(KeyCode.C)) && (Time.time > nextFire)){
             nextFire = Time.time + fireRate;
             fire();
         }
