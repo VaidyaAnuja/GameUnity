@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class swapcolorofplayer : MonoBehaviour {
 
@@ -48,8 +49,32 @@ if(Input.GetKeyDown(KeyCode.X))
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 0.6f), ForceMode2D.Impulse);
         }
 
+
+        // if(CrossPlatformInputManager.GetButtonDown("Color"))
+        // {
+        //     if(i>2){
+        //         i=0;
+        //     }
+        //     if(i==0){
+        //         whichcolor = "pink";
+        //     }
+
+        //     if(i==1){
+        //         whichcolor = "violet";
+        //     }
+
+        //     if(i==2){
+        //         whichcolor = "green";
+        //     }
+        //     spriteRenderer.sprite = spriteArray[i];
+        //     i++;
+        //     //  spriteRenderer.sprite = newSprite; 
+        //     gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 0.6f), ForceMode2D.Impulse);
+        // }
+
 if(health == 0){
    // Destroy(gameObject);
+   EverythingabtScore.lastscoreatendgame = displayhealth.score;
      SceneManager.LoadScene("EndGame");
 }
 
@@ -63,6 +88,13 @@ if(Input.GetKeyDown(KeyCode.V)){
             enemycollidendecreasehealth.enemyhealth = enemycollidendecreasehealth.enemyhealth+2;
             
         }
+
+        // if(CrossPlatformInputManager.GetButtonDown("Snooze")){
+        //     count = count + 1;
+        //     timer = 8.0f;
+        //     enemycollidendecreasehealth.enemyhealth = enemycollidendecreasehealth.enemyhealth+2;
+            
+        // }
 }
 
 

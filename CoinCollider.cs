@@ -26,7 +26,7 @@ public class CoinCollider : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col){
             if(col.gameObject.CompareTag("player") ){
-                //collider_coin.enabled = false;
+                collider_coin.enabled = false;
                 displayhealth.score = displayhealth.score + 1;
                 //Debug.Log(displayhealth.score);
                 Destroy(this.gameObject);
