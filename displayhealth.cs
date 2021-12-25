@@ -15,17 +15,17 @@ public class displayhealth : MonoBehaviour
     {
         score = 0;
         healthtext.text = "x " + swapcolorofplayer.health.ToString();
-        ScoreTxt.text = "Score: " + score.ToString();
-        TimerText.text = "Timer: " + swapcolorofplayer.timer.ToString();
+        ScoreTxt.text = ": " + score.ToString();
+        TimerText.text = ": " + swapcolorofplayer.timer.ToString();
         healthtextforenemy.text = "x " + enemycollidendecreasehealth.enemyhealth.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ScoreTxt.text = "Score: " + score.ToString();
+        ScoreTxt.text = ": " + score.ToString();
         healthtext.text = "x " + swapcolorofplayer.health.ToString();
         healthtextforenemy.text = "x " + enemycollidendecreasehealth.enemyhealth.ToString();
-        TimerText.text = "Timer: " + swapcolorofplayer.timer.ToString();
+        TimerText.text = ": " + swapcolorofplayer.timer.ToString();
     }
 }

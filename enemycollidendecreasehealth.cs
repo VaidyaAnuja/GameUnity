@@ -6,6 +6,7 @@ public class enemycollidendecreasehealth : MonoBehaviour
 {
     public static float timeLeft = 1.0f;
     public static int enemyhealth;
+    
     // Start is called before the first frame update
     void Start()
     {

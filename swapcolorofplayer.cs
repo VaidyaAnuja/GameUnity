@@ -11,6 +11,8 @@ public SpriteRenderer spriteRenderer;
 public GameObject player;
 public Sprite[] spriteArray;
 public static int health = 10;
+public int healthCompare;
+public float timeLeft = 1.5f;
 public static string whichcolor;
 public static float timer = 0.0f;
 public static int count = 1;
@@ -21,7 +23,8 @@ public int i=0;
 
 private void Start()
     {
-        health = 10;
+        //health = 10;
+        healthCompare = health;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         whichcolor = "green";
     }
@@ -49,6 +52,18 @@ if(Input.GetKeyDown(KeyCode.X))
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 0.6f), ForceMode2D.Impulse);
         }
 
+// if(health<healthCompare){
+//     spriteRenderer.color = new Color(1f,1f,1f,.5f);
+//     timeLeft -= Time.deltaTime;
+//     if(timeLeft < 0){
+//        spriteRenderer.color = new Color(1f,1f,1f,1f); 
+//        timeLeft = 1.5f;
+//     }
+//     //healthCompare = health;
+//     Debug.Log(timeLeft);
+//   //  Debug.Log(healthCompare);
+//     //timeLeft = 1.5f;
+// }
 
         // if(CrossPlatformInputManager.GetButtonDown("Color"))
         // {
