@@ -5,12 +5,16 @@ using UnityEngine;
 public class enemycollidendecreasehealth : MonoBehaviour
 {
     public static float timeLeft = 1.0f;
+    public static float timer = 1.0f;
+    public bool blink = false;
     public static int enemyhealth;
+    public SpriteRenderer spriteRenderer;
     
     // Start is called before the first frame update
     void Start()
     {
         enemyhealth = 2;
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -18,6 +22,16 @@ public class enemycollidendecreasehealth : MonoBehaviour
     {
         if(transform.position.y<-6){
             enemyhealth = 2*swapcolorofplayer.count;
+        }
+
+        if(blink){
+            timer -= Time.deltaTime;
+            if(timer < 0)
+        {
+            blink = false;
+            spriteRenderer.color = new Color(1f,1f,1f,1f);
+            timer = 1.0f;
+        }
         }
     }
     void OnCollisionStay2D(Collision2D col){
@@ -31,11 +45,17 @@ public class enemycollidendecreasehealth : MonoBehaviour
         }
         
     }
+
+  
 }
 
 void OnCollisionEnter2D (Collision2D col){
     if((col.gameObject.CompareTag("weapon"))){
+        spriteRenderer.color = new Color(1f,1f,1f,.5f);
+        blink = true;
         enemyhealth = enemyhealth-1;
+        
+
         if(enemyhealth<=0){
           Destroy(gameObject);
           enemyhealth = 2*swapcolorofplayer.count;

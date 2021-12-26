@@ -19,12 +19,14 @@ public class makechild_tile222 : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D col){
         if(col.gameObject.CompareTag("player")){
+                col.transform.SetParent(null);
                 isOnMoving = false;
         }
     }
 
    private void OnCollisionEnter2D(Collision2D col){
                 if(col.gameObject.CompareTag("player")){
+                        col.transform.SetParent(this.transform);
                 isOnMoving = true;
         }
    }

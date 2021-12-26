@@ -5,6 +5,9 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class player2dcontroller : MonoBehaviour
 {
+    public static float timer = 1.0f;
+    public bool blink = false;
+
     public GameObject weapontoright;
     public GameObject weapontoleft;
     Vector2 weaponpos;
@@ -44,6 +47,18 @@ public class player2dcontroller : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+
+        if(blink){
+            timer -= Time.deltaTime;
+            if(timer < 0)
+        {
+            blink = false;
+            colorrenderer_player.color = new Color(1f,1f,1f,1f);
+            timer = 1.0f;
+        }
+        }
+
+
         Vector3 characterScale = transform.localScale;
 
         is_grounded = Physics2D.OverlapCircle(groundcheck.position, 2.0f, groundlayer);
@@ -97,20 +112,6 @@ public class player2dcontroller : MonoBehaviour
         }
 
         
-        if(makechild_tile111.isOnMoving){
-            this.transform.SetParent(tile111.transform);
-        }
-        if((makechild_tile111.isOnMoving ==false) && (makechild_tile222.isOnMoving ==false) && (makechild_tile333.isOnMoving ==false) ){
-            this.transform.SetParent(null);
-        }
-
-        if(makechild_tile222.isOnMoving){
-            this.transform.SetParent(tile222.transform);
-        }
-
-        if(makechild_tile333.isOnMoving){
-            this.transform.SetParent(tile333.transform);
-        }
 
 
         // if ((CrossPlatformInputManager.GetButtonDown("Fire")) && (Time.time > nextFire)){
@@ -186,6 +187,11 @@ public class player2dcontroller : MonoBehaviour
             else{
                 collider_player.enabled = false;
             }
+        }
+
+        if((col.gameObject.CompareTag("spike")) || (col.gameObject.CompareTag("enemy"))){
+            colorrenderer_player.color = new Color(1f,1f,1f,.5f);
+            blink = true;
         }
 
 
