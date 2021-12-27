@@ -10,8 +10,8 @@ public class EmptyScriptForEndGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ScoreTxt.text = "Score: " + EverythingabtScore.lastscoreatendgame.ToString();
-         HighScoreTxt.text = "Highest Score: " + EverythingabtScore.highest_score.ToString();
+        ScoreTxt.text = "Score: " + displayhealth.score.ToString();
+        
     }
 
     // Update is called once per frame

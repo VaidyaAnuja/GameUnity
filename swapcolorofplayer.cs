@@ -76,7 +76,7 @@ if(Input.GetKeyDown(KeyCode.X))
 
 if(health == 0){
    // Destroy(gameObject);
-   EverythingabtScore.lastscoreatendgame = displayhealth.score;
+   
      SceneManager.LoadScene("EndGame");
 }
 

@@ -107,7 +107,7 @@ public class player2dcontroller : MonoBehaviour
         if(transform.position.y < -6){
             // GameController.isGameOver = true;
             //Destroy(gameObject);
-            EverythingabtScore.lastscoreatendgame = displayhealth.score;
+            
             SceneManager.LoadScene("EndGame");
         }
 
