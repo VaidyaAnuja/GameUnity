@@ -4,10 +4,8 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.SceneManagement;
 
-public class pausescript : MonoBehaviour
+public class RestartAndMenu : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
-    public GameObject pauseMenuUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,25 +15,8 @@ public class pausescript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.Escape)){
-        //     if (GameIsPaused)
-        //     {
-        //         Resume();
-        //     }
-        //     else{
-        //         Pause();
-        //     }
-        // }
-
-        if(CrossPlatformInputManager.GetButtonDown("Pause")){
-            Pause();
-        }
-
-        if(CrossPlatformInputManager.GetButtonDown("Resume")){
-            Resume();
-        }
-
         // if(CrossPlatformInputManager.GetButtonDown("Restart")){
+        //     Time.timeScale = 1f;
         //     SceneManager.LoadScene("Game");
         // }
 
@@ -46,18 +27,14 @@ public class pausescript : MonoBehaviour
         // if(CrossPlatformInputManager.GetButtonDown("Menu")){
         //          SceneManager.LoadScene("Menu");
         // }
-        
     }
 
-    void Resume(){
-        pauseMenuUI.SetActive(false);
+    public void Restart(){
         Time.timeScale = 1f;
-        GameIsPaused = false;
+        SceneManager.LoadScene("Game");
     }
 
-    void Pause(){
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
+    public void Menu(){
+        SceneManager.LoadScene("Menu");
     }
 }
