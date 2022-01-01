@@ -10,7 +10,7 @@ public SpriteRenderer spriteRenderer;
 //public Sprite newSprite;
 public GameObject player;
 public Sprite[] spriteArray;
-public static int health = 10;
+public static int health;
 
 public static string whichcolor;
 public static float timer = 0.0f;
@@ -22,7 +22,8 @@ public int i=0;
 
 private void Start()
     {
-        health = 10;
+        health = 10 + PlayerPrefs.GetInt("ExtraHealth", 0);
+        PlayerPrefs.SetInt("ExtraHealth", 0);
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         whichcolor = "green";
     }
