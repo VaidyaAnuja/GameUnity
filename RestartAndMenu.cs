@@ -42,6 +42,7 @@ public class RestartAndMenu : MonoBehaviour
     }
 
     public void Play(){
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Game");
     }
 

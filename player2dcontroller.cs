@@ -116,12 +116,14 @@ public class player2dcontroller : MonoBehaviour
 
         // if ((CrossPlatformInputManager.GetButtonDown("Fire")) && (Time.time > nextFire)){
         //     nextFire = Time.time + fireRate;
+        //FindObjectOfType<AudioManager>().Play("Weapon");
         //     fire();
         // }
 
 
         if ((Input.GetKeyDown(KeyCode.C)) && (Time.time > nextFire)){
             nextFire = Time.time + fireRate;
+            FindObjectOfType<AudioManager>().Play("Weapon");
             fire();
         }
 
@@ -192,6 +194,7 @@ public class player2dcontroller : MonoBehaviour
         if((col.gameObject.CompareTag("spike")) || (col.gameObject.CompareTag("enemy"))){
             colorrenderer_player.color = new Color(1f,1f,1f,.5f);
             blink = true;
+            FindObjectOfType<AudioManager>().Play("Hurt");
         }
 
 

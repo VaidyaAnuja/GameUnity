@@ -26,6 +26,7 @@ public class CoinCollider : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col){
             if(col.gameObject.CompareTag("player") ){
+                FindObjectOfType<AudioManager>().Play("CoinCollect");
                 collider_coin.enabled = false;
                 displayhealth.score = displayhealth.score + 1;
                 
