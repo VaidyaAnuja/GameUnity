@@ -46,7 +46,7 @@ public class RestartAndMenu : MonoBehaviour
     }
 
     public void HowTo(){
-        SceneManager.LoadScene("Storyboard");
+        SceneManager.LoadScene("Tutorial");
     }
 
     // public void About(){
