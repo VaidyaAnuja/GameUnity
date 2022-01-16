@@ -18,13 +18,15 @@ public class Shop_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // TotalScoreTxt.text = "Total Score: " + PlayerPrefs.GetInt("TotalScore", 0).ToString();
+        TotalScoreTxt.text = "Total Score: " + PlayerPrefs.GetInt("TotalScore", 0).ToString();
     }
     public void Buy(){
+        if(PlayerPrefs.GetInt("TotalScore", 0)>=20){
         Score = PlayerPrefs.GetInt("TotalScore", 0) - 20;
         PlayerPrefs.SetInt("TotalScore", Score);
         health = PlayerPrefs.GetInt("ExtraHealth", 0) + 1;
         PlayerPrefs.SetInt("ExtraHealth", health);
+        }
         closeshop.SetActive(false);
         Time.timeScale = 1f;
     }
