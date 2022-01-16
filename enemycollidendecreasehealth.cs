@@ -7,20 +7,20 @@ public class enemycollidendecreasehealth : MonoBehaviour
     public static float timeLeft = 1.0f;
     public static float timer = 1.0f;
     public bool blink = false;
-    public static int enemyhealth;
+    public static int enemyhealth = 2;
     public SpriteRenderer spriteRenderer;
     
     // Start is called before the first frame update
     void Start()
     {
-        enemyhealth = 2;
+       // enemyhealth = 2;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.y<-6){
+        if(transform.position.y<-10){
             enemyhealth = 2*swapcolorofplayer.count;
         }
 

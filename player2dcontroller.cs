@@ -62,45 +62,45 @@ public class player2dcontroller : MonoBehaviour
         Vector3 characterScale = transform.localScale;
 
         is_grounded = Physics2D.OverlapCircle(groundcheck.position, 2.0f, groundlayer);
-        if (CrossPlatformInputManager.GetButtonDown("Jump"))
-        { 
-            if(is_grounded){
-               // collider_player.enabled = false;
-        Jump();
-        }}
-        var movement = CrossPlatformInputManager.GetAxis("Horizontal");
-        transform.position += new Vector3(movement,0,0) * Time.deltaTime * MovementSpeed;
-        
-        if(CrossPlatformInputManager.GetAxis("Horizontal") < 0){
-            characterScale.x = -0.3f;
-            
-            faceright = false;
-        }
-        if(CrossPlatformInputManager.GetAxis("Horizontal") > 0){
-            characterScale.x = 0.3f;
-            
-            faceright = true;
-        }
-
-        // if (Input.GetKeyDown(KeyCode.Space))
+        // if (CrossPlatformInputManager.GetButtonDown("Jump"))
         // { 
         //     if(is_grounded){
         //        // collider_player.enabled = false;
         // Jump();
         // }}
-        // var movement = Input.GetAxis("Horizontal");
+        // var movement = CrossPlatformInputManager.GetAxis("Horizontal");
         // transform.position += new Vector3(movement,0,0) * Time.deltaTime * MovementSpeed;
         
-        // if(Input.GetAxis("Horizontal") < 0){
+        // if(CrossPlatformInputManager.GetAxis("Horizontal") < 0){
         //     characterScale.x = -0.3f;
             
         //     faceright = false;
         // }
-        // if(Input.GetAxis("Horizontal") > 0){
+        // if(CrossPlatformInputManager.GetAxis("Horizontal") > 0){
         //     characterScale.x = 0.3f;
             
         //     faceright = true;
         // }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        { 
+            if(is_grounded){
+               // collider_player.enabled = false;
+        Jump();
+        }}
+        var movement = Input.GetAxis("Horizontal");
+        transform.position += new Vector3(movement,0,0) * Time.deltaTime * MovementSpeed;
+        
+        if(Input.GetAxis("Horizontal") < 0){
+            characterScale.x = -0.3f;
+            
+            faceright = false;
+        }
+        if(Input.GetAxis("Horizontal") > 0){
+            characterScale.x = 0.3f;
+            
+            faceright = true;
+        }
 
         transform.localScale = characterScale;
 
@@ -114,18 +114,18 @@ public class player2dcontroller : MonoBehaviour
         
 
 
-        if ((CrossPlatformInputManager.GetButtonDown("Fire")) && (Time.time > nextFire)){
-            nextFire = Time.time + fireRate;
-        FindObjectOfType<AudioManager>().Play("Weapon");
-            fire();
-        }
-
-
-        // if ((Input.GetKeyDown(KeyCode.C)) && (Time.time > nextFire)){
+        // if ((CrossPlatformInputManager.GetButtonDown("Fire")) && (Time.time > nextFire)){
         //     nextFire = Time.time + fireRate;
-        //     FindObjectOfType<AudioManager>().Play("Weapon");
+        // FindObjectOfType<AudioManager>().Play("Weapon");
         //     fire();
         // }
+
+
+        if ((Input.GetKeyDown(KeyCode.C)) && (Time.time > nextFire)){
+            nextFire = Time.time + fireRate;
+            FindObjectOfType<AudioManager>().Play("Weapon");
+            fire();
+        }
 
     }
 

@@ -9,7 +9,7 @@ public class CoinCollider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        collider_coin = GetComponent<CircleCollider2D>();
+        collider_coin = gameObject.GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame

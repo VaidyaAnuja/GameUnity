@@ -33,8 +33,11 @@ public class RestartAndMenu : MonoBehaviour
     }
 
     public void Restart(){
+        swapcolorofplayer.count = 1;
+        enemycollidendecreasehealth.enemyhealth = 2;
         Time.timeScale = 1f;
         SceneManager.LoadScene("Game");
+       // enemycollidendecreasehealth.enemyhealth = 2;
     }
 
     public void Menu(){
@@ -42,6 +45,8 @@ public class RestartAndMenu : MonoBehaviour
     }
 
     public void Play(){
+        swapcolorofplayer.count = 1;
+        enemycollidendecreasehealth.enemyhealth = 2;
         Time.timeScale = 1f;
         SceneManager.LoadScene("Game");
     }
