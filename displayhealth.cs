@@ -16,7 +16,7 @@ public class displayhealth : MonoBehaviour
         score = 0;
         healthtext.text = "x " + swapcolorofplayer.health.ToString();
         ScoreTxt.text = ": " + score.ToString();
-        TimerText.text = ": " + swapcolorofplayer.timer.ToString();
+        TimerText.text = ": " + Mathf.Round(swapcolorofplayer.timer);
         healthtextforenemy.text = "x " + enemycollidendecreasehealth.enemyhealth.ToString();
     }
 
@@ -26,6 +26,6 @@ public class displayhealth : MonoBehaviour
         ScoreTxt.text = ": " + score.ToString();
         healthtext.text = "x " + swapcolorofplayer.health.ToString();
         healthtextforenemy.text = "x " + enemycollidendecreasehealth.enemyhealth.ToString();
-        TimerText.text = ": " + swapcolorofplayer.timer.ToString();
+        TimerText.text = ": " + Mathf.Round(swapcolorofplayer.timer);
     }
 }

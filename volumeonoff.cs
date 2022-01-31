@@ -12,10 +12,12 @@ public class volumeonoff : MonoBehaviour
         if(PlayerPrefs.GetInt("mute", 0)==0){
             volon.SetActive(true);
         voloff.SetActive(false);
+         AudioListener.pause = false;
         }
         else{
             volon.SetActive(false);
         voloff.SetActive(true);
+         AudioListener.pause = true;
         }
     }
 
@@ -25,10 +27,12 @@ public class volumeonoff : MonoBehaviour
         if(PlayerPrefs.GetInt("mute", 0)==0){
             volon.SetActive(true);
         voloff.SetActive(false);
+         AudioListener.pause = false;
         }
         else{
             volon.SetActive(false);
         voloff.SetActive(true);
+         AudioListener.pause = true;
         }
     }
 }

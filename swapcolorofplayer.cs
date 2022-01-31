@@ -85,6 +85,10 @@ if(timer > 0){
             swapcolorofplayer.timer -= Time.deltaTime;
 }
 
+if(timer <= 0){
+            swapcolorofplayer.timer = 0;
+}
+
 if(Input.GetKeyDown(KeyCode.V)){
             count = count + 1;
             timer = 8.0f;
