@@ -29,7 +29,31 @@ private void Start()
     }
 
 private void Update(){
-if(Input.GetKeyDown(KeyCode.X))
+// if(Input.GetKeyDown(KeyCode.X))
+//         {
+//             if(i>2){
+//                 i=0;
+//             }
+//             if(i==0){
+//                 whichcolor = "pink";
+//             }
+
+//             if(i==1){
+//                 whichcolor = "violet";
+//             }
+
+//             if(i==2){
+//                 whichcolor = "green";
+//             }
+//             spriteRenderer.sprite = spriteArray[i];
+//             i++;
+//             //  spriteRenderer.sprite = newSprite; 
+//             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 0.6f), ForceMode2D.Impulse);
+//         }
+
+
+
+        if(CrossPlatformInputManager.GetButtonDown("Color"))
         {
             if(i>2){
                 i=0;
@@ -51,30 +75,6 @@ if(Input.GetKeyDown(KeyCode.X))
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 0.6f), ForceMode2D.Impulse);
         }
 
-
-
-        // if(CrossPlatformInputManager.GetButtonDown("Color"))
-        // {
-        //     if(i>2){
-        //         i=0;
-        //     }
-        //     if(i==0){
-        //         whichcolor = "pink";
-        //     }
-
-        //     if(i==1){
-        //         whichcolor = "violet";
-        //     }
-
-        //     if(i==2){
-        //         whichcolor = "green";
-        //     }
-        //     spriteRenderer.sprite = spriteArray[i];
-        //     i++;
-        //     //  spriteRenderer.sprite = newSprite; 
-        //     gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 0.6f), ForceMode2D.Impulse);
-        // }
-
 if(health == 0){
    // Destroy(gameObject);
    
@@ -89,7 +89,17 @@ if(timer <= 0){
             swapcolorofplayer.timer = 0;
 }
 
-if(Input.GetKeyDown(KeyCode.V)){
+// if(Input.GetKeyDown(KeyCode.V)){
+//             count = count + 1;
+//             timer = 8.0f;
+//             // if(enemycollidendecreasehealth.enemyhealth==0){
+//             //     enemycollidendecreasehealth.enemyhealth = 2;
+//             // }
+//             enemycollidendecreasehealth.enemyhealth = enemycollidendecreasehealth.enemyhealth+2;
+            
+//         }
+
+        if(CrossPlatformInputManager.GetButtonDown("Snooze")){
             count = count + 1;
             timer = 8.0f;
             // if(enemycollidendecreasehealth.enemyhealth==0){
@@ -98,16 +108,6 @@ if(Input.GetKeyDown(KeyCode.V)){
             enemycollidendecreasehealth.enemyhealth = enemycollidendecreasehealth.enemyhealth+2;
             
         }
-
-        // if(CrossPlatformInputManager.GetButtonDown("Snooze")){
-        //     count = count + 1;
-        //     timer = 8.0f;
-        //     // if(enemycollidendecreasehealth.enemyhealth==0){
-        //     //     enemycollidendecreasehealth.enemyhealth = 2;
-        //     // }
-        //     enemycollidendecreasehealth.enemyhealth = enemycollidendecreasehealth.enemyhealth+2;
-            
-        // }
 }
 
 
