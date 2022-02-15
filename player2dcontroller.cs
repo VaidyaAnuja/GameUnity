@@ -16,7 +16,7 @@ public class player2dcontroller : MonoBehaviour
     public bool faceright = true;
     
 
-    public float MovementSpeed = 3;
+    public float MovementSpeed = 6;
     public float JumpForce = 8;
     bool is_grounded;
     public Transform groundcheck;
